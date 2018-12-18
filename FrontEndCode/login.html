@@ -96,7 +96,27 @@
           <span class="float-right">当前位置：jsliang 前端>登录注册</span>
         </h4>
         <div class="row content-text">
-          <p>登录</p>
+          <div class="col-md-4 card">
+            <br>
+            <h4 class="text-center">登录账号</h4>
+            <div>
+              <label for="userName">用户昵称：</label>
+              <input type="text" class="form-control is-valid" id="userName" placeholder="请输入用户名" required>
+              <div class="valid-feedback">用户名正确</div>
+            </div>
+            <div>
+              <label for="userPassword">账号密码：</label>
+              <input type="text" class="form-control is-invalid" id="userPassword" placeholder="请输入密码" required>
+              <div class="invalid-feedback">密码不正确</div>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-primary" type="submit">登录</button>
+            </div>
+            <br>
+          </div>
+          <div class="col-md-8">
+            <img class="img-fluid" src="./images/common-login&register.png" alt="欢迎登录/注册">
+          </div>
         </div>
       </div>
     </div>
