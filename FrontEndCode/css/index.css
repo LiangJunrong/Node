@@ -88,7 +88,7 @@ img{border:0}
 /* 3.index.html */
 /* 左边 */
 .sidebar {
-    background: url(./../images/index-sidebar.png);
+    background: url(./../images/index-sidebar.png) no-repeat;
     width: 170px;
     height: 203px;
     margin-bottom: 30px;
