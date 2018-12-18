@@ -1,155 +1,272 @@
 /* 1.css reset */
-html{color:#000;overflow-y:scroll;overflow:-moz-scrollbars-vertical}
-/* body{background: #EAE9E7 !important;} */
-body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,ul,ol,li,pre,form,fieldset,button,input,textarea,th,td{margin:0;padding:0}
-body,button,input,select,textarea{font-size:12px;font-family:arial,'Hiragino Sans GB','Microsoft Yahei','微软雅黑','宋体',\5b8b\4f53,Tahoma,Arial,Helvetica,STHeiti}
-h1,h2,h3,h4,h5,h6,button,input,select,textarea{font-size:100%}
-ul,ol{list-style:none}
-a,a:hover{text-decoration:none;}
-table{border-collapse:collapse;border-spacing:0}
-img{border:0;-ms-interpolation-mode:bicubic}
-textarea{resize:vertical}
-button{cursor:pointer}
-img{border:0}
+html {
+  color: #000;
+  overflow-y: scroll;
+  overflow: -moz-scrollbars-vertical
+}
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,ul,ol,li,pre,form,fieldset,button,input,textarea,th,td {
+  margin: 0;
+  padding: 0
+}
+body,button,input,select,textarea {
+  font-size: 12px;
+  font-family: arial, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', '宋体', \5b8b\4f53, Tahoma, Arial, Helvetica, STHeiti
+}
+h1,h2,h3,h4,h5,h6,button,input,select,textarea {
+  font-size: 100%
+}
+ul,ol {
+  list-style: none
+}
+a,a:hover {
+  text-decoration: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic
+}
+textarea {
+  resize: vertical
+}
+button {
+  cursor: pointer
+}
+img {
+  border: 0
+}
 /* end 1 */
 
 /* 2.common css */
-.left{float:left}
-.right{float:right}
-.overflow{overflow:hidden}
-.hide{display:none}
-.block{display:block}
-.inline{display:inline}
-.inline-block{display:inline-block;}
-.clearfix:after{content:'\20';display:block;height:0;clear:both}
-.clearfix{zoom:1}.clear{clear:both;height:0;line-height:0;font-size:0;visibility:hidden;overflow:hidden}
+.left {
+  float: left
+}
+.right {
+  float: right
+}
+.overflow {
+  overflow: hidden
+}
+.hide {
+  display: none
+}
+.block {
+  display: block
+}
+.inline {
+  display: inline
+}
+.inline-block {
+  display: inline-block;
+}
+.clearfix:after {
+  content: '\20';
+  display: block;
+  height: 0;
+  clear: both
+}
+.clearfix {
+  zoom: 1
+}
+.clear {
+  clear: both;
+  height: 0;
+  line-height: 0;
+  font-size: 0;
+  visibility: hidden;
+  overflow: hidden
+}
 
 /* 头部 */
 .header nav {
-    background: #0C3F74 !important;
+  background: #0C3F74 !important;
 }
 .banner {
-    background: url(./../images/common-banner-slider.jpg);
+  background: url(./../images/common-banner-slider.jpg);
 }
+.nav-right-link {
+  color: rgba(255,255,255,.5);
+}
+.nav-item-active {
+  color: #fff;
+}
+.nav-link-register {
+  margin-left: 10px;
+  margin-right: -10px;
+}
+.nav-right-link:hover {
+  color: deepskyblue;
+}
+
 /* 内容区 */
 .container .aside {
-    margin-top: 30px;
+  margin-top: 30px;
 }
+
 /* 底部 */
 .footer {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 .copyright {
-    background: #1360b0;
-    color: #fff;
-    padding: 20px 0 0.1px;
+  background: #1360b0;
+  color: #fff;
+  padding: 20px 0 0.1px;
 }
 .copyright a {
-    color: #d3c3c3;
+  color: #d3c3c3;
 }
 .copyright a:hover {
-    color: #fff;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: none;
 }
 .network-security {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 .network-security a {
-    color: #939393;
+  color: #939393;
 }
+
 /* 其他共用 */
 .content {
-    padding: 10px 25px 20px !important;
-    border: 1px solid #cac7c7;
-    border-radius: 10px;
+  padding: 10px 25px 20px !important;
+  border: 1px solid #cac7c7;
+  border-radius: 10px;
 }
 .content img {
-    display: inline-block;
-    margin-top: 20px;
-    margin-bottom: 10px;
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 .content-nav {
-    border-bottom: 1px dotted #000;
-    height: 50px;
-    line-height: 50px;
-    font-size: 16px;
+  border-bottom: 1px dotted #000;
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
 }
 .content-nav img {
-    display: inline-block;
-    margin-top: 5px;
+  display: inline-block;
+  margin-top: 5px;
 }
 .content h5 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 /* end 2 */
 
 /* 3.index.html */
 /* 左边 */
 .sidebar {
-    background: url(./../images/index-sidebar.png) no-repeat;
-    width: 170px;
-    height: 203px;
-    margin-bottom: 30px;
+  background: url(./../images/index-sidebar.png) no-repeat;
+  width: 170px;
+  height: 203px;
+  margin-bottom: 30px;
 }
 .sidebar ul {
-    display: inline-block;
-    margin-top: 48px;
+  display: inline-block;
+  margin-top: 48px;
 }
 .triangle {
-    font-size: 0;  
-    line-height: 0;  
-    border-width: 5px;  
-    border-color: transparent transparent transparent #3179BE;  
-    border-right-width: 0;  
-    border-style: dashed;  
-    border-left-style: solid;
-    margin-right: 8px;
-    display: inline-block;
-    margin-top: -10px;
+  font-size: 0;
+  line-height: 0;
+  border-width: 5px;
+  border-color: transparent transparent transparent #3179BE;
+  border-right-width: 0;
+  border-style: dashed;
+  border-left-style: solid;
+  margin-right: 8px;
+  display: inline-block;
+  margin-top: -10px;
 }
 .sidebar ul li {
-    height: 34px;
-    line-height: 34px;
-    margin-left: 22px;
+  height: 34px;
+  line-height: 34px;
+  margin-left: 22px;
 }
 .sidebar ul li a {
-    color: #696969;
+  color: #696969;
 }
 .sidebar ul li a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 .strategic-partner {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
+
 /* 右边 */
 .content p {
-    text-indent:2em
+  text-indent: 2em
 }
 .content-text {
-    clear: both;
+  clear: both;
 }
 .content-text .col-md-4 img {
-    display: inline-block;
-    margin-bottom: 1rem;
+  display: inline-block;
+  margin-bottom: 1rem;
 }
-/* end 3 */
 
+/* end 3 */
 /* 4.mobileApplications.html */
 .project {
-    margin-top: -60px;
+  margin-top: -60px;
 }
 .project a {
-    display: inline-block;
-    margin-left: -30px;
+  display: inline-block;
+  margin-left: -30px;
 }
 .project a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
+
 /* end 4 */
 
 /* 5.job.html */
 .job div h5 {
-    margin-top: 40px;
+  margin-top: 40px;
+}
+/* end 5 */
+
+/* 6. messageBoard.html */
+.message-board-sidebar {
+  width: 170px;
+  margin-bottom: 30px;
+}
+.message-board-sidebar img {
+  border-radius: 10px;
+}
+.font-bold {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+.content ul li {
+  margin-left: 1em;
+  line-height: 2em;
+}
+.text-indent-one button {
+  margin-left: 1em;
+}
+.user-name {
+  color: deepskyblue;
+  cursor: pointer;
+}
+.message-time {
+  color: #ccc;
+  font-size: .9em;
+}
+/* end 6 */
+
+/* JavaScript 交互 */
+
+/* 用户登录与否 */
+#nav-link-register {
+  /* display: none; */
+}
+#nav-link-login {
+  /* display: none; */
+}
+#nav-link-user {
+  display: none;
 }

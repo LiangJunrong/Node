@@ -1,4 +1,3 @@
-<!-- 增值业务 -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +8,7 @@
   <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>增值业务-jsliang 前端有限公司</title>
+  <title>首页-jsliang 前端有限公司</title>
   <link rel="stylesheet" href="./css/index.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
 </head>
@@ -33,7 +32,7 @@
           <li class="nav-item">
             <a class="nav-link" href="consultingBusiness.html">咨询业务</a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="valueAddedService.html">增值业务</a>
           </li>
           <li class="nav-item">
@@ -53,7 +52,7 @@
         </form>
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link nav-right-link" id="nav-link-register" href="login.html">登录</a>
+            <a class="nav-link nav-right-link nav-item-active" id="nav-link-register" href="login.html">登录</a>
           </li>
           <li class="nav-item">
             <a class="nav-link nav-right-link" id="nav-link-login" href="register.html">注册</a>
@@ -62,7 +61,7 @@
             <a class="nav-link nav-right-link" id="nav-link-user" href="javascript:void(0)">用户名</a>
           </li>
         </ul>
-
+        
       </div>
     </nav>
     <div class="banner">
@@ -73,6 +72,18 @@
     <div class="row aside">
       <div class="col-md-2">
         <div class="row">
+          <div class="sidebar">
+            <ul>
+              <li>
+                <span class="triangle"></span>
+                <a href="login.html" class="text-primary">登录</a>
+              </li>
+              <li>
+                <span class="triangle"></span>
+                <a href="register.html">注册</a>
+              </li>
+            </ul>
+          </div>
           <div class="strategic-partner">
             <img src="./images/common-china_tele.png" alt="战略伙伴">
           </div>
@@ -81,22 +92,32 @@
       <div class="col-md-10 content">
         <h4 class="content-nav">
           <span class="text-primary float-left">
-            <img src="./images/common-nav-btn.png" alt="小导航图标">&nbsp;增值业务</span>
-          <span class="float-right">当前位置：jsliang 前端>增值业务</span>
+            <img src="./images/common-nav-btn.png" alt="小导航图标">&nbsp;用户操作</span>
+          <span class="float-right">当前位置：jsliang 前端>登录注册</span>
         </h4>
-        <img class="img-fluid" src="./images/valueAddedService-content1.jpg" alt="内容图片1">
-        <p>jsliang 前端成立以来一直以打造国内领先的增值服务提供商为战略目标，扎根前端服务领域，是中国前端在无线增值领域的战略合作伙伴。
-          公司经过8年的发展，业已拓展核心的增值业务，并凭借丰富的服务类型，为用户提供最专业、最完善、最丰富的信息和娱乐服务。</p>
-        <h5>主要业务介绍</h5>
-        <p>短信：jsliang 前端是第一批广东前端聚龙计划的合作伙伴，凭借成熟的SP产品运营经验、 准确的市场推广以及产品功能、群发语的细致优化，每 月获得小灵通短信增值业务收入约30万元，在所有接入的SP公司中名列前茅。</p>
-        <p>彩信：jsliang 前端与《美食天地》《新菜汤》《数码宝贝》《PSP
-          NONE》等多本热门刊物及雅达英语、洪一恩教育等著名教育出版机构结成深度合作，有丰富而充足的版权资源，为用户提供商旅、交通、教育、娱乐、餐饮、旅游、健康、便民等资讯服务。</p>
-        <p>WAP：曾与广东有旅游发展局合作，开发广东无线旅游网。</p>
-        <p>IVR：jsliang 前端 2011 年 7 月在江门市开设一家专业的呼叫中心，团队超过80人，核心团队成员均曾服务过中国前端 1000、号码千事通 111111 或中国移动
-          10096，拥有多年卓越的专业外呼经验。主要业务类型为电话营销、推广传播、商务调研、客户回访等业务，以前端行业直销服务为基础，业已发展成为当地较成功的客户服务中心。</p>
-        <p>互联网：公司拥有自营教育类网站，如星空教育城、乐教通h、名师辅导、星空英语、动漫风、酷游，已接入前端互联星空业务及多个地市的互联网业务，服务用户范围覆盖全国。</p>
-        <p>无线音乐：公司现已接入中国前端爱音乐业务及联通音乐业务，承办运营商的明星歌友会、演唱会等多项线上线下推广活动，积极与灿途影业等
-          多家唱片公司、影视公司结成良好的合作关系，并结合传统媒体、网盟、门户网站、外呼结成四位一体的宣传态势，稳步发展，获得不俗的收入和成绩。</p>
+        <div class="row content-text">
+          <div class="col-md-4 card">
+            <br>
+            <h4 class="text-center">登录账号</h4>
+            <div>
+              <label for="userName">用户昵称：</label>
+              <input type="text" class="form-control is-valid" id="userName" placeholder="请输入用户名" required>
+              <div class="valid-feedback">用户名正确</div>
+            </div>
+            <div>
+              <label for="userPassword">账号密码：</label>
+              <input type="text" class="form-control is-invalid" id="userPassword" placeholder="请输入密码" required>
+              <div class="invalid-feedback">密码不正确</div>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-primary" type="submit">登录</button>
+            </div>
+            <br>
+          </div>
+          <div class="col-md-8">
+            <img class="img-fluid" src="./images/common-login&register.png" alt="欢迎登录/注册">
+          </div>
+        </div>
       </div>
     </div>
   </div>

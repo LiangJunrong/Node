@@ -20,6 +20,8 @@ http.createServer(function (req, res) {
   // 防止 url 请求 2 次
   if(req.url != "/favicon.ico") {
     
+    console.log("开始编程");
+
     // 判断 url
     console.log(req.url);
 
