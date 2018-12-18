@@ -41,6 +41,9 @@
           <li class="nav-item">
             <a class="nav-link" href="mobileApplications.html">移动应用</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="messageBoard.html">留言板</a>
+          </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" action="http://www.baidu.com/baidu" target="_blank">
           <input class="form-control mr-sm-2" type="search" name="word" placeholder="jsliang" aria-label="Search">
@@ -49,10 +52,13 @@
         </form>
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="login.html">登录</a>
+            <a class="nav-link nav-right-link" id="nav-link-register" href="login.html">登录</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="register.html">注册</a>
+            <a class="nav-link nav-right-link" id="nav-link-login" href="register.html">注册</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-right-link" id="nav-link-user" href="javascript:void(0)">用户名</a>
           </li>
         </ul>
         
@@ -128,6 +134,15 @@
 
   <script src="./js/jquery-3.3.1.min.js"></script>
   <script src="./js/bootstrap.min.js"></script>
+
+  <script>
+    $(function() {
+      sessionStorage.setItem("id", "1");
+      sessionStorage.setItem("userName", "jsliang");
+      console.log(sessionStorage.getItem("id"));
+      console.log(sessionStorage.getItem("userName"));
+    })
+  </script>
 </body>
 
 </html>
