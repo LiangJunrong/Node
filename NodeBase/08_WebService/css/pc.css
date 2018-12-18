@@ -1,0 +1,161 @@
+/* 
+    * PC端常用的css设置，项目经常使用PC端css都在这里
+    * common css for computer
+*/
+
+/* index.html */
+
+/** PC布局 - PC layout **/
+body {
+    min-width: 1000px;
+    background: url("../images/pc-banner.png") no-repeat center top; 
+    overflow-x: auto;
+}
+.container {
+    width: 1000px;
+    height: 700px;
+    margin: 0 auto;
+}
+.banner {
+    height: 300px;
+}
+.content {
+    background: url("../images/pc-content-bg.png") no-repeat center;
+    height: 700px;
+    position: relative;
+}
+/* end */
+
+.content a {
+    color: black;
+    text-shadow: 3px;
+    font-size: 22px;
+    font-weight: bold;
+}
+.content a:hover {
+    color: #fff;
+}
+.deadline {
+    position: absolute;
+    top: 55px;
+    left: 250px;
+    width: 119px;
+    height: 148px;
+    padding-top: 35px;
+    padding-left: 15px;
+}
+.webpack {
+    position: absolute;
+    top: 10px;
+    left: 745px;
+    width: 114px;
+    height: 136px;
+    padding-top: 50px;
+    padding-left: 60px;
+}
+.blog {
+    position: absolute;
+    width: 141px;
+    height: 88px;
+    top: 420px;
+    left: 90px;
+    padding-top: 60px;
+    padding-left: 30px;
+}
+.game {
+    position: absolute;
+    width: 83px;
+    height: 56px;
+    top: 550px;
+    left: 380px;
+    padding-top: 80px;
+    padding-left: 20px;
+}
+.hello {
+    position: absolute;
+    width: 78px;
+    height: 69px;
+    top: 485px;
+    left: 795px;
+    padding-top: 80px;
+    padding-left: 20px;
+}
+.mobile-decoration {
+    display: none;
+}
+.content-text {
+    position: absolute;
+    top: 220px;
+    left: 400px;
+    font-size: 24px;
+}
+.baidu-search {
+    display: none;
+}
+.pc-star a {
+    color: rgb(255, 0, 85);
+    font-size: 1.2em;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+
+/** 弹窗 - alert **/
+.jsliang-prompt {
+    display: none;
+}
+.jsliang-mask {
+    z-index: 998;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    filter: alpha(opacity=30);
+    -ms-filter: "alpha(opacity=30)";
+    opacity: .3;
+    
+}
+.jsliang-alert {
+    z-index: 999;
+    position: fixed;
+    top: 30%;
+    left: 40%;
+    width: 320px;
+    height: 220px;
+    box-shadow: 2px 2px 4px #A0A0A0, -2px -2px 4px #A0A0A0;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+}
+.jsliang-alert img {
+    width: 120px;
+    height: 83.8px;
+}
+.jsliang-alert p {
+    margin-top: 10px;
+}
+.jsliang-get-it {
+    color: #fff;
+    background: #5bc0de;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143em;
+    white-space: nowrap;
+    cursor: pointer;
+    border-color: #46b8da;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+}
+.jsliang-get-it:hover {
+    background: #31b0d5;
+}
+/* end */

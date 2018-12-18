@@ -1,0 +1,3 @@
+$(function() {
+    $("#baidu-input").focus();
+})

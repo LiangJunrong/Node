@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Node Web</title>
+
+</head>
+
+<body>
+
+  <div id="app">
+    <h1>Todo List</h1>
+    <ul>
+      <li v-for="(item, index) in items" :key="index">{{ item }}</li>
+    </ul>
+    <input type="text" v-model="item">
+    <button @click="postApi">添加</button>
+  </div>
+
+  <!-- cdn 引用：Vue 和 Node -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  
+  <script>
+    new Vue({
+      el: document.getElementById('app'),
+      data: function () {
+        return {
+          items: [],
+          item: '',
+        }
+      },
+      created() {
+        // 进入页面请求数据
+        axios.get('http://localhost:3000/').then(res => {
+          console.log("\n【API - get 数据】");
+          console.log(res);
+          this.items = res.data;
+        }).catch(function (err) {
+          console.log(err)
+        })
+      },
+      methods: {
+        // 点击按钮提交数据
+        postApi() {
+          axios.post('http://localhost:3000/', {
+            item: this.item
+          }).then(res => {
+            console.log("\n【API - post 数据】")
+            console.log(res);
+            this.items = res.data;
+          }).catch(function (err) {
+            console.log(err)
+          })
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
