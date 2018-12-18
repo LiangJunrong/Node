@@ -5,6 +5,6 @@ $(function() {
     sessionStorage.setItem("id", "1");
     sessionStorage.setItem("userName", "jsliang");
   } else {
-    // window.location.href = "../login.html";
+    window.location.href = "../login.html";
   }
 })
