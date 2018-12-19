@@ -7,6 +7,8 @@ var connection = mysql.createConnection({
   password: '123456',
   database: 'nodebase'
 });
+// 开始连接
+connection.connect();
 
 // 引入 http 模块：http 是提供 Web 服务的基础
 const http = require("http");
@@ -31,7 +33,7 @@ http.createServer(function (req, res) {
   // 跨域允许的请求方式
   res.setHeader('Content-Type', 'application/json');
 
-  if (req.method == "POST") {
+  if (req.method == "POST") { // 接口 POST 形式
 
     console.log("\n【POST 形式】");
 
@@ -63,42 +65,105 @@ http.createServer(function (req, res) {
 
         console.log("\n【API - 登录】");
 
+        // 返回数据
+        res.write(JSON.stringify(result));
+
+        // 结束响应
+        res.end();
+
       } else if (pathName == "/register") { // 注册
 
         console.log("\n【API - 注册】");
 
         result = JSON.parse(result);
 
-        let username = result.username;
-        let password = result.password;
-        let time = getNowFormatDate();
+        let username = result.username; // 用户名
+        let password = result.password; // 密码
+        let time = getNowFormatDate(); // 时间
 
-        if (!username) {
+        if (!username) { // 用户名为空
           res.end("注册失败，用户名为空。");
           return;
-        } else if (!password) {
+        } else if (!password) { // 密码为空
           res.end("注册失败，密码为空");
           return;
         } else {
+          
           // 查询 user 表
-          // readSql("user", "jsliang");
-          let result = readSql("user");
-          console.log(result);
+          new Promise( (resolve, reject) => {
 
-          console.log("\n注册成功！");
+            // 新增的 SQL 语句及新增的字段信息
+            let readSql = "SELECT * FROM user";
+            
+            // 连接 SQL 并实施语句
+            connection.query(readSql, function (error1, response1) {
+              if (error1) { // 如果 SQL 语句错误
+                throw error1;
+              } else {
+                
+                console.log("\nSQL 查询结果：");
 
+                // 将结果先去掉 RowDataPacket，再转换为 json 对象
+                let newRes = JSON.parse(JSON.stringify(response1));
+                console.log(newRes);
+
+                // 判断姓名重复与否
+                let userNameRepeat = false;
+                for(let item in newRes) {
+                  if(newRes[item].user_name == username) {
+                    userNameRepeat = true;
+                  }
+                }
+
+                // 如果姓名重复
+                if(userNameRepeat) {
+                  res.end("注册失败，姓名重复！");
+                  return;
+                } else if(newRes.length > 6) { // 如果注册名额已满
+                  res.end("注册失败，名额已满！");
+                  return;
+                } else { // 可以注册
+                  resolve();
+                }
+                
+              }
+            });
+
+          }).then( () => {
+            
+            console.log("\n第二步：");
+            
+            // 新增的 SQL 语句及新增的字段信息
+            let addSql = "INSERT INTO user(user_name,user_password, time) VALUES(?,?,?)";
+            let addSqlParams = [result.username, result.password, time];
+
+            // 连接 SQL 并实施语句
+            connection.query(addSql, addSqlParams, function (error2, response2) {
+              if (error2) { // 如果 SQL 语句错误
+                console.log("新增错误：");
+                console.log(error2);
+                return;
+              } else {
+                console.log("\nSQL 查询结果：");
+                console.log(response2);
+
+                console.log("\n注册成功！");
+
+                // 结束响应
+                res.end("注册成功！");
+              }
+            });
+
+          })
+          // Promise 结束
         }
-
+        // 注册流程结束
       }
-
-      // 返回数据
-      res.write(JSON.stringify(result));
-
-      // 结束响应
-      res.end();
+      // 接口信息处理完毕
     })
+    // 数据接收完毕
 
-  } else if (req.method == "GET") {
+  } else if (req.method == "GET") { // 接口 GET 形式
 
     console.log("\n【GET 形式】");
 
@@ -131,69 +196,19 @@ http.createServer(function (req, res) {
 // 获取当前时间
 function getNowFormatDate() {
   var date = new Date();
-  var seperator1 = "-";
-  var year = date.getFullYear();
-  var month = date.getMonth() + 1;
-  var strDate = date.getDate();
+  var year = date.getFullYear(); // 年
+  var month = date.getMonth() + 1; // 月
+  var strDate = date.getDate(); // 日
+  var hour = date.getHours(); // 时
+  var minute = date.getMinutes(); // 分
+  var second = date.getMinutes(); // 秒
   if (month >= 1 && month <= 9) {
     month = "0" + month;
   }
   if (strDate >= 0 && strDate <= 9) {
     strDate = "0" + strDate;
   }
-  var currentdate = year + seperator1 + month + seperator1 + strDate;
+  // 返回 yyyy-mm-dd hh:mm:ss 形式
+  var currentdate = year + "-" + month + "-" + strDate + " " + hour + ":" + minute + ":" + second;
   return currentdate;
-}
-
-// 查询某个表：表名，字段
-function readSql(tableName, tableField) {
-
-  new Promise( (resolve, reject) => {
-    // 开始连接
-    connection.connect();
-
-    // 新增的 SQL 语句及新增的字段信息
-    let readSql = "SELECT * FROM " + tableName;
-    if(tableField) {
-      readSql = "SELECT * FROM " + tableName + " WHERE user_name = " + tableField;
-    }
-    console.log("111");
-    let result;
-    // 连接 SQL 并实施语句
-    connection.query(readSql, function (err, res) {
-      if (err) {
-        throw err;
-      } else {
-        console.log(res);
-        result = res;
-      }
-    });
-
-    resolve(result);
-  }).then( (res) => {
-    // 终止连接
-    connection.end();
-
-    return res;
-  })
-  
-}
-
-// 新增数据
-function addSql() {
-  // 新增的 SQL 语句及新增的字段信息
-  let addSql = "INSERT INTO user(id,user_name,user_password, time) VALUES(0,?,?)";
-  let addSqlParams = [result.username, result.password, time];
-
-  // 连接 SQL 并实施语句
-  connection.query(addSql, addSqlParams, function (error, response) {
-    if (error) {
-      console.log("新增错误：");
-      console.log(error);
-      return;
-    } else {
-      console.log("新增成功：");
-      console.log(response);
-    }
-  });
 }
