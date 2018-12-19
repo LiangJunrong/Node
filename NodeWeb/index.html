@@ -3,7 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>regist</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>演示代码</title>
 </head>
 
 <body>
@@ -16,17 +18,16 @@
   <div>
     <button id="register">注册</button>
   </div>
-</body>
-<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-<script>
-  $(function () {
-    $("#register").click(function () {
+
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+  <script>
+    $(function () {
+      // 测试 get 接口
       $.ajax({
-        url: "http://localhost:8888/login",
+        url: "http://localhost:8888/getMessage",
         type: "POST",
         data: {
-          username: $("#user").val(),
-          password: $("#password").val()
+          username: "jsliang"
         },
         success: function (res) {
           console.log(res);
@@ -35,8 +36,26 @@
           console.log(err);
         }
       })
-    })
-  });
-</script>
+
+      $("#register").click(function () {
+        // 测试 post 接口
+        $.ajax({
+          url: "http://localhost:8888/login",
+          type: "POST",
+          data: {
+            username: $("#user").val(),
+            password: $("#password").val()
+          },
+          success: function (res) {
+            console.log(res);
+          },
+          error: function (err) {
+            console.log(err);
+          }
+        })
+      })
+    });
+  </script>
+</body>
 
 </html>

@@ -45,15 +45,15 @@ http.createServer(function (req, res) {
       console.log("\n参数为：");
       console.log(reuslt);
 
-      if(pathName == "/sendMessage") {
+      if(pathName == "/sendMessage") { // 提交留言信息
         
         console.log("\n【API - 提交留言信息】");
 
-      } else if (pathName == "/login") {
+      } else if (pathName == "/login") { // 登录
 
         console.log("\n【API - 登录】");
 
-      } else if (pathName == "/register") {
+      } else if (pathName == "/register") { // 注册
 
         console.log("\n【API - 注册】");
 
@@ -75,7 +75,7 @@ http.createServer(function (req, res) {
 
     console.log("\n接口为：" + pathName);
 
-    if(pathName == "/getMessage") {
+    if(pathName == "/getMessage") { // 获取留言信息
 
       console.log("\n【API - 获取留言信息】");
 
