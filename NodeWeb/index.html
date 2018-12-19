@@ -22,8 +22,8 @@
   $(function () {
     $("#register").click(function () {
       $.ajax({
-        url: "http://localhost:8888/register",
-        type: "get",
+        url: "http://localhost:8888/login",
+        type: "POST",
         data: {
           username: $("#user").val(),
           password: $("#password").val()
