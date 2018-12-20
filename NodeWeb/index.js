@@ -65,12 +65,70 @@ http.createServer(function (req, res) {
 
         console.log("\n【API - 登录】");
 
-        // 返回数据
-        res.write(JSON.stringify(result));
+        result = JSON.parse(result);
 
-        // 结束响应
-        res.end();
+        let username = result.username; // 用户名
+        let password = result.password; // 密码
 
+        if (!username) { // 用户名为空
+          res.end("登录失败，用户名为空！");
+          return;
+        } else if (!password) { // 密码为空
+          res.end("登录失败，密码为空！");
+          return;
+        } else if(username.length > 10) {
+          res.end("登录失败，姓名过长！");
+          return;
+        } else if(password.length > 20) {
+          res.end("登录失败，密码过长！");
+          return;
+        } else { 
+          
+          // 新增的 SQL 语句及新增的字段信息
+          let readSql = "SELECT * FROM user WHERE user_name  = '" + username + "'";
+
+          // 连接 SQL 并实施语句
+          connection.query(readSql, function (error1, response1) {
+            if (error1) {
+              throw error1;
+            } else {
+              if(response1 == undefined || response1.length == 0) { // 不存在用户
+                res.end("\n不存在该用户！");
+                return;
+              } else { // 存在用户
+                console.log("\n存在该用户！");
+
+                let newRes = JSON.parse(JSON.stringify(response1));
+                console.log(newRes);
+
+                if(newRes[0].user_password == password) { // 密码正确
+                  // 返回数据
+                  res.write(JSON.stringify({
+                    code: "0",
+                    message: "登录成功！",
+                    data: {
+                      id: newRes[0].id,
+                      userName: newRes[0].user_name
+                    }
+                  }));
+
+                  res.end();
+                } else { // 密码错误
+                  // 返回数据
+                  res.write(JSON.stringify({
+                    code: "1",
+                    message: "登录失败，密码错误！"
+                  }));
+
+                  res.end();
+                }
+                // 判断密码正确与否完毕
+              }
+              // 存在用户处理结束
+            }
+          });
+        }
+        // 登录步骤结束
       } else if (pathName == "/register") { // 注册
 
         console.log("\n【API - 注册】");
@@ -85,7 +143,13 @@ http.createServer(function (req, res) {
           res.end("注册失败，用户名为空。");
           return;
         } else if (!password) { // 密码为空
-          res.end("注册失败，密码为空");
+          res.end("注册失败，密码为空！");
+          return;
+        } else if(username.length > 10) {
+          res.end("注册失败，姓名过长！");
+          return;
+        } else if(password.length > 20) {
+          res.end("注册失败，密码过长！");
           return;
         } else {
           
@@ -119,7 +183,7 @@ http.createServer(function (req, res) {
                 if(userNameRepeat) {
                   res.end("注册失败，姓名重复！");
                   return;
-                } else if(newRes.length > 6) { // 如果注册名额已满
+                } else if(newRes.length > 300) { // 如果注册名额已满
                   res.end("注册失败，名额已满！");
                   return;
                 } else { // 可以注册
@@ -149,8 +213,14 @@ http.createServer(function (req, res) {
 
                 console.log("\n注册成功！");
 
+                // 返回数据
+                res.write(JSON.stringify({
+                  code: "0",
+                  message: "注册成功！"
+                }));
+
                 // 结束响应
-                res.end("注册成功！");
+                res.end();
               }
             });
 
@@ -186,6 +256,14 @@ http.createServer(function (req, res) {
       res.write(JSON.stringify(params));
 
       // 结束响应
+      res.end();
+    } else if(pathName == "/") { // 首页
+      res.writeHead(200, {
+        "Content-Type": "text/html;charset=UTF-8"
+      });
+
+      res.write('<h1 style="text-align:center">jsliang 前端有限公司服务已开启！</h1><h2 style="text-align:center">详情可见：<a href="https://github.com/LiangJunrong/document-library/blob/master/other-library/Node/NodeBase.md" target="_blank">Node 基础</a></h2>');
+
       res.end();
     }
 
