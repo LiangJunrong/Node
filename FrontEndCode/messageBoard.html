@@ -85,7 +85,8 @@
             <span class="float-right">当前位置：jsliang 前端>留言咨询</span>
           </h4>
           <ul class="message-board-ul" id="message-board-ul">
-            <li class="message-board-li">
+            <!-- 填充位置 -->
+            <!-- <li class="message-board-li">
               <span class="text-warning font-bold">☆ </span>
               <span class="user-message">祝 jsliang 早日找到 13K+ 的工作！</span>
               <span>—— </span>
@@ -105,7 +106,7 @@
               <span>—— </span>
               <span class="user-name">梁峻荣</span>
               <span class="message-time">2018-12-18 15:31:44</span>
-            </li>
+            </li> -->
           </ul>
           <hr>
           <div>
@@ -114,7 +115,7 @@
           </div>
           <br>
           <div class="text-indent-one">
-            <button class="btn btn-primary" type="submit">提交留言</button>
+            <button class="btn btn-primary" id="message-submit" type="submit">提交留言</button>
           </div>
         </div>
       </div>
@@ -136,7 +137,84 @@
 
   <script src="./js/jquery-3.3.1.min.js"></script>
   <script src="./js/bootstrap.min.js"></script>
-  <script src="./js/messageBoard.js"></script>
+  <script src="./js/islogin.js"></script>
+  <script>
+    $(function() {
+      
+      let userName = sessionStorage.getItem("userName");
+      let userId = sessionStorage.getItem("id");
+      
+      // 查询留言板
+      if(userName && userId) { // 如果没有存储
+        $.ajax({
+          url: "http://localhost:8888/getMessage",
+          type: 'get',
+          dataType: 'json',
+          success: function (res) {
+            console.log(res);
+            let li = ``;
+            for(let item in res.data) {
+              li = li + `
+                <li>
+                  <span class="text-warning font-bold">☆ </span>
+                  <span class="user-message">${res.data[item].user_message}</span>
+                  <span>—— </span>
+                  <span class="user-name">${res.data[item].user_name} [${res.data[item].user_id}]</span>
+                  <span class="message-time">${res.data[item].time}</span>
+                </li>
+              `;
+            }
+            $("#message-board-ul").append(li);
+          },
+          error: function (err) {
+            console.log(err);
+          }
+        })
+      } else { // 如果有存储
+        window.location.href = "../login.html";
+      }
+
+      // 提交留言
+      $("#message-submit").click(function() {
+        let messageText = $("#message").val()
+        if(!messageText) {
+          alert("留言内容不能为空");
+        } else if(messageText.length > 140) {
+          alert("留言长度不能超过 140 位！");
+        } else {
+          $.ajax({
+            url: "http://localhost:8888/sendMessage",
+            type: 'post',
+            dataType: 'json',
+            data: {
+              userid: userId,
+              username: userName,
+              message: messageText
+            },
+            success: function (res) {
+              console.log(res);
+              if(res.code == "0") {
+                alert("新增成功！");
+                window.location.reload();
+              }
+            },
+            error: function (err) {
+              console.log(err);
+              console.log(err.responseText);
+              if (err.responseText == "登录失败，留言内容为空！") {
+                alert("登录失败，留言内容为空！");
+              } else if (err.responseText == "登录失败，字数超过限制！") {
+                alert("登录失败，字数超过限制！");
+              } else {
+                alert("未知错误！");
+              }
+            }
+          })
+        }
+      })
+
+    })
+  </script>
 </body>
 
 </html>
