@@ -145,7 +145,7 @@
       let userId = sessionStorage.getItem("id");
       
       // 查询留言板
-      if(userName && userId) { // 如果没有存储
+      if(userName && userId) { // 如果有存储
         $.ajax({
           url: "http://localhost:8888/getMessage",
           type: 'get',
@@ -170,7 +170,7 @@
             console.log(err);
           }
         })
-      } else { // 如果有存储
+      } else { // 如果没有存储
         window.location.href = "../login.html";
       }
 
