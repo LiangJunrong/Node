@@ -2,7 +2,7 @@ Node 系列
 ===
 
 > Create by **jsliang** on **2018-12-18 08:09:01**  
-> Recently revised in **2018-12-18 08:09:05**
+> Recently revised in **2018-12-21 09:12:55**
 
 <br>
 
@@ -10,10 +10,11 @@ Node 系列
 
 &emsp;目录说明：
 
-1. NodeAPI：通过 Node 的 `get` 与 `post` 模块，提供 API 给前端调用。
-2. NodeBase：该目录的使用，请通过上面的链接进一步了解。
-3. NodeSQL：使用前请 `npm i`，然后将里面的表及字段换成自己数据库定义的字段。
-4. NodeWeb：原生 Node 综合应用。
+1. FrontEndCode：前端页面
+2. NodeAPI：通过 Node 的 `get` 与 `post` 模块，提供 API 给前端调用。
+3. NodeBase：该目录的使用，请通过上面的链接进一步了解。
+4. NodeSQL：使用前请 `npm i`，然后将里面的表及字段换成自己数据库定义的字段。
+5. NodeWeb：原生 Node 综合应用。
 
 <br>
 
