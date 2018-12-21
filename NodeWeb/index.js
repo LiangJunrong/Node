@@ -26,7 +26,7 @@ const qs = require("querystring");
  */
 http.createServer(function (req, res) {
 
-  // 设置跨域
+  // 设置 cors 跨域
   res.setHeader("Access-Control-Allow-Origin", "*");
   // 设置 header 类型
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
