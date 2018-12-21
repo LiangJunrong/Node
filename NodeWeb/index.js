@@ -183,15 +183,16 @@ http.createServer(function (req, res) {
         } else if (!password) { // 密码为空
           res.end("注册失败，密码为空！");
           return;
-        } else if(username.length > 10) {
+        } else if(username.length > 10) { // 姓名过长
           res.end("注册失败，姓名过长！");
           return;
-        } else if(password.length > 20) {
+        } else if(password.length > 20) { // 密码过长
           res.end("注册失败，密码过长！");
           return;
         } else {
           
           // 查询 user 表
+          // 使用 Promise 的原因是因为中间调用了两次数据库，而数据库查询是异步的，所以需要用 Promise。
           new Promise( (resolve, reject) => {
 
             // 新增的 SQL 语句及新增的字段信息
@@ -199,6 +200,7 @@ http.createServer(function (req, res) {
             
             // 连接 SQL 并实施语句
             connection.query(readSql, function (error1, response1) {
+              
               if (error1) { // 如果 SQL 语句错误
                 throw error1;
               } else {
